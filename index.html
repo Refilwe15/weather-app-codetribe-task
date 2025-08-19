@@ -5,9 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+  <style>
+    /* control the weather icon size */
+    #weather-icon {
+      width: 80px;
+      height: 80px;
+    }
+    .mini-cards {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      margin: 5px;
+      flex: 1;
+    }
+    .highlights-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .mini-cards p.value {
+      font-weight: bold;
+      margin: 5px 0 0;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -20,22 +43,21 @@
         </button>
       </div>
 
-      <!--The icon-->
+      <!-- Weather Icon -->
       <div class="icon">
-        <i class="icon bi bi-cloud-sun"></i>
+        <img id="weather-icon" src="assets/default.png" alt="Weather Icon">
       </div>
 
       <!--Temperature-->
       <div class="temperature">
-        <p class="temp">25°C</p>
+        <p class="temp">--°C</p>
       </div>
 
       <!--date and time -->
       <div class="date-time">
-        <p class="city">Polokwane</p>
-        <p class="date">Monday, 25 September 2025</p>
-        <p class="time">10:30 AM</p>
-   
+        <p class="city">--</p>
+        <p class="date">--</p>
+        <p class="time">--</p>
       </div>
 
       <div class="border"></div>
@@ -50,43 +72,15 @@
         </ul>
       </div>
 
-      <!--Days Cards-->
+      <!--Days Cards (placeholder for now)-->
       <div class="cards-container">
-        <div class="today-cards">
-          <p>Monday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Tuesday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Wednesday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Thursday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Friday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Saturday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
-        <div class="today-cards">
-          <p>Sunday</p>
-          <i class="bi bi-cloud-sun"></i>
-          <p>25°C</p>
-        </div>
+        <div class="today-cards"><p>Monday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Tuesday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Wednesday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Thursday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Friday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Saturday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards"><p>Sunday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
       </div>
 
       <!--Highlights-->
@@ -98,30 +92,37 @@
         <div class="mini-cards">
           <p>UV Index</p>
           <i class="bi bi-thermometer-sun"></i>
+          <p class="value" id="uv">N/A</p>
         </div>
         <div class="mini-cards">
           <p>Wind Status</p>
           <i class="bi bi-wind"></i>
+          <p class="value" id="wind">--</p>
         </div>
         <div class="mini-cards">
           <p>Humidity</p>
           <i class="bi bi-droplet"></i>
+          <p class="value" id="humidity">--</p>
         </div>
         <div class="mini-cards">
           <p>Visibility</p>
           <i class="bi bi-eye"></i>
+          <p class="value" id="visibility">--</p>
         </div>
         <div class="mini-cards">
           <p>Air Pressure</p>
           <i class="bi bi-speedometer2"></i>
+          <p class="value" id="pressure">--</p>
         </div>
         <div class="mini-cards">
           <p>Sunrise</p>
           <i class="bi bi-sunrise"></i>
+          <p class="value" id="sunrise">--</p>
         </div>
       </div>
     </div>
   </div>
+
 <script>
   const apiKey = "a48bbc5ec6c9320927fdbe9bc68ed148";
   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
@@ -168,6 +169,23 @@
     } else {
       weatherIcon.src = "assets/default.png"; // fallback
     }
+
+    // --- Update Highlights ---
+    document.getElementById("wind").innerText = data.wind.speed + " m/s";
+    document.getElementById("humidity").innerText = data.main.humidity + "%";
+    document.getElementById("visibility").innerText = (data.visibility / 1000) + " km";
+    document.getElementById("pressure").innerText = data.main.pressure + " hPa";
+
+    const sunriseDate = new Date((data.sys.sunrise + data.timezone) * 1000);
+    const sunriseTime = sunriseDate.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    document.getElementById("sunrise").innerText = sunriseTime;
+
+    // UV Index requires a different endpoint - put placeholder for now
+    document.getElementById("uv").innerText = "N/A";
   }
 
   const searchBox = document.querySelector(".input-group .form-control");
@@ -177,7 +195,6 @@
     checkWeather(searchBox.value);
   });
 
-  // Optional: press Enter to search
   searchBox.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       checkWeather(searchBox.value);
@@ -185,10 +202,6 @@
   });
 </script>
 
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
