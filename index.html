@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <style>
-    /* control the weather icon size */
+   
     #weather-icon {
       width: 80px;
       height: 80px;
@@ -21,11 +21,7 @@
       margin: 5px;
       flex: 1;
     }
-    .highlights-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+  
     .mini-cards p.value {
       font-weight: bold;
       margin: 5px 0 0;
@@ -45,42 +41,85 @@
 
       <!-- Weather Icon -->
       <div class="icon">
-        <img id="weather-icon" src="assets/default.png" alt="Weather Icon">
+        <img id="weather-icon" src="assets/drizzle.png" alt="Weather Icon">
       </div>
 
       <!--Temperature-->
       <div class="temperature">
-        <p class="temp">--°C</p>
+        <p class="temp">16°C</p>
+        <p class="cond" style="font-size: 20px;">Sunny</p>
       </div>
 
       <!--date and time -->
       <div class="date-time">
-        <p class="city">--</p>
-        <p class="date">--</p>
-        <p class="time">--</p>
+        <p class="city">New York</p>
+        <p class="date">Wednesday, 25 August 2025</p>
+        <p class="time">10 : 16 am</p>
       </div>
 
       <div class="border"></div>
+
+      <div class="container mt-4">
+  
+  <div class="ratio ratio-16x9"> 
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093745!2d144.9559283159045!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5779bb0f66ecb1!2sFederation%20Square!5e0!3m2!1sen!2sza!4v1692588800000!5m2!1sen!2sza" 
+      width="600" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      id="map"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
     </div>
 
     <!-- Right Side -->
     <div class="right">
       <div class="today-weather">
-        <ul class="list-group">
-          <li><a href="#">Today</a></li>
-          <li><a href="#">Week</a></li>
-        </ul>
+          <p style="font-weight: bold; font-size: 20px;">Weekly</p>
       </div>
 
-      <!--Days Cards (placeholder for now)-->
+    
       <div class="cards-container">
-        <div class="today-cards"><p>Monday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Tuesday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Wednesday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Thursday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Friday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Saturday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
-        <div class="today-cards"><p>Sunday</p><i class="bi bi-cloud-sun"></i><p>25°C</p></div>
+        <div class="today-cards">
+          <p>Monday</p>
+          <i class="bi bi-cloud-sun" ></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Tuesday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Wednesday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Thursday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Friday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Saturday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
+        <div class="today-cards">
+          <p>Sunday</p>
+          <i class="bi bi-cloud-sun"></i>
+          <p>25°C</p>
+        </div>
       </div>
 
       <!--Highlights-->
@@ -97,109 +136,34 @@
         <div class="mini-cards">
           <p>Wind Status</p>
           <i class="bi bi-wind"></i>
-          <p class="value" id="wind">--</p>
+          <p class="value" id="wind">0.02 m/s</p>
         </div>
         <div class="mini-cards">
           <p>Humidity</p>
           <i class="bi bi-droplet"></i>
-          <p class="value" id="humidity">--</p>
+          <p class="value" id="humidity">32%</p>
         </div>
         <div class="mini-cards">
           <p>Visibility</p>
           <i class="bi bi-eye"></i>
-          <p class="value" id="visibility">--</p>
+          <p class="value" id="visibility">10km</p>
         </div>
         <div class="mini-cards">
           <p>Air Pressure</p>
           <i class="bi bi-speedometer2"></i>
-          <p class="value" id="pressure">--</p>
+          <p class="value" id="pressure">1011hPa</p>
         </div>
         <div class="mini-cards">
           <p>Sunrise</p>
           <i class="bi bi-sunrise"></i>
-          <p class="value" id="sunrise">--</p>
+          <p class="value" id="sunrise">07:09am</p>
         </div>
       </div>
     </div>
   </div>
 
-<script>
-  const apiKey = "a48bbc5ec6c9320927fdbe9bc68ed148";
-  const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+<script src="script.js">
 
-  async function checkWeather(city) {
-    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-    var data = await response.json();
-
-    console.log(data);
-
-    // Update City & Temp
-    document.querySelector(".city").innerHTML = data.name;
-    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
-
-    // --- Update Date & Time ---
-    const utcSeconds = data.dt + data.timezone;
-    const localDate = new Date(utcSeconds * 1000);
-
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const dayName = days[localDate.getUTCDay()];
-
-    const options = { day: "numeric", month: "long", year: "numeric" };
-    const formattedDate = localDate.toLocaleDateString("en-GB", options);
-
-    const formattedTime = localDate.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-
-    document.querySelector(".date").innerHTML = `${dayName}, ${formattedDate}`;
-    document.querySelector(".time").innerHTML = formattedTime;
-
-    // --- Update Weather Icon ---
-    const weatherIcon = document.getElementById("weather-icon");
-    if (data.weather[0].main === "Clouds") {
-      weatherIcon.src = "assets/clouds.png";
-    } else if (data.weather[0].main === "Clear") {
-      weatherIcon.src = "assets/clear.png";
-    } else if (data.weather[0].main === "Rain") {
-      weatherIcon.src = "assets/rain.png";
-    } else if (data.weather[0].main === "Mist") {
-      weatherIcon.src = "assets/mist.png";
-    } else {
-      weatherIcon.src = "assets/default.png"; // fallback
-    }
-
-    // --- Update Highlights ---
-    document.getElementById("wind").innerText = data.wind.speed + " m/s";
-    document.getElementById("humidity").innerText = data.main.humidity + "%";
-    document.getElementById("visibility").innerText = (data.visibility / 1000) + " km";
-    document.getElementById("pressure").innerText = data.main.pressure + " hPa";
-
-    const sunriseDate = new Date((data.sys.sunrise + data.timezone) * 1000);
-    const sunriseTime = sunriseDate.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-    document.getElementById("sunrise").innerText = sunriseTime;
-
-    // UV Index requires a different endpoint - put placeholder for now
-    document.getElementById("uv").innerText = "N/A";
-  }
-
-  const searchBox = document.querySelector(".input-group .form-control");
-  const searchBtn = document.querySelector(".input-group .btn");
-
-  searchBtn.addEventListener("click", () => {
-    checkWeather(searchBox.value);
-  });
-
-  searchBox.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      checkWeather(searchBox.value);
-    }
-  });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
