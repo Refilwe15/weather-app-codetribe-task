@@ -44,9 +44,9 @@ function displayInformation(data) {
   const dayName = days[localDate.getUTCDay()];
 
   const options = { day: "numeric", month: "long", year: "numeric" };
-  const formattedDate = localDate.toLocaleDateString("en-GB", options);
+  const formattedDate = localDate.toLocaleDateString("en-ZA", options);
 
-  const formattedTime = localDate.toLocaleTimeString("en-GB", {
+  const formattedTime = localDate.toLocaleTimeString("en-ZA", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
@@ -57,16 +57,18 @@ function displayInformation(data) {
 
   // --- Update Weather Icon ---
   const weatherIcon = document.getElementById("weather-icon");
-  if (data.weather[0].main === "Clouds") {
-    weatherIcon.src = "assets/clouds.png";
+  if (data.weather[0].main === "Sunny") {
+    weatherIcon.src = "/assets/clouds.png";
   } else if (data.weather[0].main === "Clear") {
-    weatherIcon.src = "assets/clear.png";
+    weatherIcon.src = "/assets/clear.png";
+   } else if (data.weather[0].main === "Cloudy") {
+    weatherIcon.src = "/assets/clear.png";
   } else if (data.weather[0].main === "Rain") {
-    weatherIcon.src = "assets/rain.png";
+    weatherIcon.src = "/assets/rain.png";
   } else if (data.weather[0].main === "Mist") {
-    weatherIcon.src = "assets/mist.png";
+    weatherIcon.src = "/assets/mist.png";
   } else {
-    weatherIcon.src = "assets/drizzle.png";
+    weatherIcon.src = "assets/clear.png";
   }
 
   // --- Update Highlights ---
@@ -76,7 +78,7 @@ function displayInformation(data) {
   document.getElementById("pressure").innerText = data.main.pressure + " hPa";
 
   const sunriseDate = new Date((data.sys.sunrise + data.timezone) * 1000);
-  const sunriseTime = sunriseDate.toLocaleTimeString("en-GB", {
+  const sunriseTime = sunriseDate.toLocaleTimeString("ZA", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
