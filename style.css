@@ -98,6 +98,68 @@
   margin-top: 20px;
   justify-content: flex-start;
 }
+/* Floating toggle button */
+.theme-toggle{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  padding: 10px 14px;
+}
+
+/* DARK THEME OVERRIDES (non-destructive) */
+[data-theme="dark"] body {
+  background-color: #0b1220;
+  color: #e2e8f0;
+}
+[data-theme="dark"] .left {
+  background-color: #111827;
+  color: #e5e7eb;
+  box-shadow: none;
+}
+[data-theme="dark"] .right {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+[data-theme="dark"] .today-cards,
+[data-theme="dark"] .mini-cards {
+  background-color: #111827;
+  color: #e5e7eb;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04);
+}
+[data-theme="dark"] .mini-cards p.value,
+[data-theme="dark"] .temperature p,
+[data-theme="dark"] .date-time p,
+[data-theme="dark"] .today-weather p,
+[data-theme="dark"] .today-highlights {
+  color: #e5e7eb;
+}
+[data-theme="dark"] .today-cards i,
+[data-theme="dark"] .mini-cards i {
+  color: #fbbf24; /* keep your “orange-ish” accent readable */
+}
+[data-theme="dark"] .border { border-color: #374151; }
+
+[data-theme="dark"] .input-group .form-control{
+  background-color: #0b1220;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+[data-theme="dark"] .input-group .form-control::placeholder{
+  color: #9ca3af;
+}
+[data-theme="dark"] .btn{
+  border-color: #4b5563;
+}
+
+/* Toggle button look in dark theme */
+[data-theme="dark"] #theme-toggle{
+  background-color: #1f2937;
+  color: #e5e7eb;
+  border-color: #374151;
+}
 
 
     .today-cards {
